@@ -42,7 +42,7 @@ async function fetchAndDisplayData() {
 
         const data = await response.json();
 
-        console.log(data)
+        console.log(`data`, data);
 
         // Display the data
         if (data.length === 0) {
@@ -50,23 +50,23 @@ async function fetchAndDisplayData() {
             return;
         }
 
-        // Create HTML for the data
-        const html = `
-            <ul>
-                ${data.map(item => `
-                    <li>
-                        <strong>ID:</strong> ${item.id}<br>
-                        ${Object.entries(item)
-                            .filter(([key]) => key !== 'id')
-                            .map(([key, value]) => `
-                                <strong>${key}:</strong> ${value}<br>
-                            `).join('')}
-                    </li>
-                `).join('')}
-            </ul>
-        `;
+        // // Create HTML for the data
+        // const html = `
+        //     <ul>
+        //         ${data.map(item => `
+        //             <li>
+        //                 <strong>ID:</strong> ${item.id}<br>
+        //                 ${Object.entries(item)
+        //                     .filter(([key]) => key !== 'id')
+        //                     .map(([key, value]) => `
+        //                         <strong>${key}:</strong> ${value}<br>
+        //                     `).join('')}
+        //             </li>
+        //         `).join('')}
+        //     </ul>
+        // `;
 
-        dataContainer.innerHTML = html;
+        // dataContainer.innerHTML = html;
     } catch (error) {
         console.error('Error:', error);
         dataContainer.textContent = 'Failed to load data. Check console for details.';
